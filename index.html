@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>font-family</title>
+</head>
+<body>
+
+<template>
+<div>
+<p>font-family: <input type="text" value=""><button>Set</button></p>
+<article>
+<p lang="en">en: Wake The Fuck up Samurai, we have city to burn</p>
+<p lang="de">de: Weck den verdammten Samurai auf, wir haben eine Stadt zum Abbrennen</p>
+<p lang="fr">fr: Réveillez le putain de samouraï, nous avons une ville à brûler</p>
+<p lang="it">it: Sveglia quel cazzo di Samurai, abbiamo una città da bruciare</p>
+<p lang="es">es: Despierta al jodido Samurai, tenemos una ciudad que quemar</p>
+<p lang="ru">ru: Разбуди чертового самурая, нам нужно сжечь город.</p>
+<p lang="el">el: Ξυπνήστε το Fuck up Samurai, έχουμε πόλη να κάψουμε</p>
+<p lang="zh">zh: 唤醒他妈的武士，我们有城市要烧</p>
+<p lang="ja">ja: 目を覚ませよサムライ、街に火をつけるぞ</p>
+<p lang="ko">ko: 망할 사무라이를 깨워라, 도시를 불태워야 한다</p>
+<p contenteditable="true">[Write your own text here]</p>
+</article>
+</div>
+</template>
+
+<style>
+div {
+  font-size: 120%;
+  margin: 2em;
+
+  & input {
+    width: 50em;
+  }
+}
+</style>
+
+<script>
+function setFontFamily(content, value) {
+  if (value) {
+    content.querySelector('input').value = value;
+  } else {
+    value = content.querySelector('input').value;
+  }
+  content.querySelector('article').style.fontFamily = value;
+}
+
+function setEvent(content) {
+  content.querySelector('button').addEventListener('click', () => {
+    setFontFamily(content);
+  });
+}
+
+const template = document.querySelector('template');
+const content1 = template.content.cloneNode(true).querySelector('div');
+const content2 = template.content.cloneNode(true).querySelector('div');
+
+setFontFamily(content1, 'Arial, Helvetica, sans-serif');
+setFontFamily(content2, 'system-ui');
+setEvent(content1);
+setEvent(content2);
+
+document.body.appendChild(content1);
+document.body.appendChild(content2);
+</script>
+
+</body>
+</html>
